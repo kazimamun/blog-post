@@ -1,17 +1,17 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import {
   BrowserRouter as Router,
   Switch,
-  Route,
-  Link
+  Route
 } from "react-router-dom";
+import Header from './Components/Header/Header';
 import Posts from './Components/Posts/Posts';
 import SinglePost from './Components/SinglePost/SinglePost';
 
 function App() {
-  return (
+  return (    
     <Router>
+      <Header />
       <Switch>
         <Route path="/post/:postId">
           <SinglePost />
