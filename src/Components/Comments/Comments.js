@@ -29,6 +29,7 @@ const Comments = (props) => {
     },[]);
     return (
         <List className={classes.root}>
+            <h3>Comment Area:</h3>
             { 
                 comments.map(comment=>{
                     return(
