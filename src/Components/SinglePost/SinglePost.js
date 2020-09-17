@@ -1,21 +1,40 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import Comments from '../Comments/Comments';
+import Comments from '../Comments/Comments';import Typography from '@material-ui/core/Typography';
+import { makeStyles } from '@material-ui/core/styles';
+
+const useStyles = makeStyles({
+  root: {
+    width: '100%',
+  },
+});
 
 const SinglePost = () => {
-    const {id} = useParams();
+    const classes = useStyles();
+    const {postId} = useParams();
     const [post, setPost] = useState({});
-    const [comment, setComment] = useState([]);
+    const [comments, setComments] = useState([]);
     useEffect(()=>{
-        fetch(`https://jsonplaceholder.typicode.com/posts/${id}`)
+        fetch(`https://jsonplaceholder.typicode.com/posts/${postId}`)
         .then(res=>res.json())
         .then(data => setPost(data))
     },[])
     return (
-        <div>
-            post id is {post.id}
-            <Comments comment={comment} setComment={setComment} id={id}/>
-        </div>
+        <>
+           <div className={classes.root}>
+           <Typography variant="h4" gutterBottom>
+                {post.title}
+            </Typography>
+            <Typography variant="body2" gutterBottom>
+                {post.body}
+            </Typography>
+           </div>
+            <Comments 
+                comments={comments} 
+                setComments={setComments} 
+                postId={postId}
+            />
+        </>
     );
 };
 

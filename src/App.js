@@ -13,7 +13,7 @@ function App() {
   return (
     <Router>
       <Switch>
-        <Route path="/post/:id">
+        <Route path="/post/:postId">
           <SinglePost />
         </Route>
         <Route exact path="/">
